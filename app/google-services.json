@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "273129699059",
+    "project_id": "imeiguard-90e96",
+    "storage_bucket": "imeiguard-90e96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273129699059:android:3309e1a3c094d23da06986",
+        "android_client_info": {
+          "package_name": "com.lideatech.imeiguard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkeTDJdc18XMJ-te4gAxaEZ99ZSWRCWWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

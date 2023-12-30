@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.IMEIGuard" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#3B77AC</item>
+        <item name="colorPrimaryVariant">#3B77AC</item>
+        <item name="colorOnPrimary">#3B77AC</item>
+
+        <item name="android:statusBarColor" tools:tagretApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="Theme.IMEIGuard" parent="Base.Theme.IMEIGuard" />
+</resources>
