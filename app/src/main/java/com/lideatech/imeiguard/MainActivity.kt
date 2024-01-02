@@ -11,10 +11,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.google.firebase.auth.FirebaseAuth
 import com.lideatech.imeiguard.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
 
     object DatabaseManager {
         private var devicesDb: SQLiteDatabase? = null
@@ -33,9 +35,6 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val intent = Intent(this, StartedActivity::class.java)
-        startActivity(intent)
-        finish()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -51,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        auth = FirebaseAuth.getInstance()
 
     }
 
@@ -73,6 +74,13 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.policy -> {
                 openWebsite("https://www.lideatech.com/")
+                true
+            }
+            R.id.logout -> {
+                val intent = Intent(this, StartedActivity::class.java)
+                startActivity(intent)
+                finish()
+                auth.signOut()
                 true
             }
             else -> super.onOptionsItemSelected(item)

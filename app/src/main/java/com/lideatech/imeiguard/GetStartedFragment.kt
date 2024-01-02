@@ -12,7 +12,6 @@ class GetStartedFragment : Fragment() {
     private lateinit var binding: FragmentGetStartedBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = FragmentGetStartedBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
     }
 
@@ -21,7 +20,9 @@ class GetStartedFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_get_started, container, false)
+        binding =  FragmentGetStartedBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

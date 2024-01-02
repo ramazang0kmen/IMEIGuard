@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
-import com.lideatech.imeiguard.databinding.FragmentGetStartedBinding
 import com.lideatech.imeiguard.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -17,7 +16,6 @@ class LoginFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = FragmentLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
@@ -28,13 +26,16 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.singUpButton.setOnClickListener { register() }
+        binding.loginButton.setOnClickListener { login() }
     }
 
     private fun login() {
@@ -43,7 +44,9 @@ class LoginFragment : Fragment() {
 
         auth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                val intent = Intent(requireContext(), MainActivity::class.java)
+
+
+                val intent = Intent(view?.context, MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
             }
