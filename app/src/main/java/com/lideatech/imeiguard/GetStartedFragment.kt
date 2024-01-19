@@ -32,6 +32,7 @@ class GetStartedFragment : Fragment() {
     }
 
     private fun GetStarted() {
+        binding.getStartedButton.isEnabled = false
         val action = GetStartedFragmentDirections.actionGetStartedFragmentToLoginFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }

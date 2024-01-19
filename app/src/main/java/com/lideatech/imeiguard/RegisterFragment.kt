@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -40,7 +41,7 @@ class RegisterFragment() : Fragment() {
 
         // Fragment üzerindeki view elemanlarına erişim veya diğer işlemler burada yapılır
 
-        binding.registerButton.setOnClickListener{register()}
+        binding.registerButton.setOnClickListener{ register() }
         binding.loginButton.setOnClickListener { login() }
 
     }
@@ -50,6 +51,8 @@ class RegisterFragment() : Fragment() {
         val password = binding.textPassword.text.toString()
         val namesurname = binding.textNameSurname.text.toString()
         val date = binding.textDate.text.toString()
+
+        binding.registerButton.isEnabled = false
 
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
             //asenkron
@@ -70,6 +73,8 @@ class RegisterFragment() : Fragment() {
     }
 
     private fun login() {
+        binding.loginButton.isEnabled = false
+
         val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }

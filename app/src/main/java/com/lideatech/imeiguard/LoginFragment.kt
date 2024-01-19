@@ -39,6 +39,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun login() {
+        binding.loginButton.isEnabled = false
+
         val email = binding.TextEmailAddress.text.toString()
         val password = binding.TextPassword.text.toString()
 
@@ -56,6 +58,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun register() {
+        binding.singUpButton.isEnabled = false
+
         val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
         Navigation.findNavController(requireView()).navigate(action)
     }
